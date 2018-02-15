@@ -3,11 +3,15 @@ package com.example.android.habittracker.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Database helper for HabitTracker app. Manages database creation and version management.
  */
 public class HabitDbHelper extends SQLiteOpenHelper {
+
+    // Log tag
+    public static final String LOG_TAG = HabitDbHelper.class.getSimpleName();
 
     // Constant for database name
     public static final String DATABASE_NAME = "habits";
@@ -20,7 +24,7 @@ public class HabitDbHelper extends SQLiteOpenHelper {
      *
      * @param context of the app
      */
-    public HabitDbHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public HabitDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -29,11 +33,13 @@ public class HabitDbHelper extends SQLiteOpenHelper {
      * This is called when the database is created for the first time.
      */@Override
     public void onCreate(SQLiteDatabase db) {
-        // Create a String that contains the SQL statement to create the habits table
-        String SQL_CREATE_HABITS_TABLE = "CREATE TABLE" + HabitContract.HabitEntry.TABLE_NAME + "(" +
+        Log.v(LOG_TAG, "Entering the helper class' onCreate method.");
+         // Create a String that contains the SQL statement to create the habits table
+        String SQL_CREATE_HABITS_TABLE = "CREATE TABLE " + HabitContract.HabitEntry.TABLE_NAME + "(" +
                 HabitContract.HabitEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                HabitContract.HabitEntry.HABIT_NAME + "TEXT NOT NULL, " +
-                HabitContract.HabitEntry.HABIT_STREAK + "INTEGER NOT NULL DEFAULT 0);";
+                HabitContract.HabitEntry.HABIT_NAME + " TEXT NOT NULL, " +
+                HabitContract.HabitEntry.HABIT_LAST_LOGGED + " INTEGER DEFAULT 0, " +
+                HabitContract.HabitEntry.HABIT_STREAK + " INTEGER DEFAULT 0);";
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_HABITS_TABLE);

@@ -3,7 +3,7 @@ package com.example.android.habittracker.data;
 import android.provider.BaseColumns;
 
 /**
- * API Contract for the HabitTracket app.
+ * API Contract for the HabitTracker app.
  */
 public final class HabitContract {
 
@@ -16,6 +16,9 @@ public final class HabitContract {
 
         // Constant for  habit column column name
         public static final String HABIT_NAME = "habit";
+
+        // Constant for last logged date
+        public static final String HABIT_LAST_LOGGED = "last";
 
         // Constant for habit streak column name
         public static final String HABIT_STREAK = "streak";
