@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">HabitTracker</string>
-    <string name="title_activity_add_habit">AddHabitActivity</string>
+    <string name="title_activity_add_habit">Add Habit</string>
+    <string name="message_add_habit_succeeded">Habit added</string>
+    <string name="message_add_habit_failed">Failed to add habit</string>
+    <string name="testing_habit_name">Meditate</string>
+    <string name="testing_number_of_entries_start">The habits table contains</string>
+    <string name="testing_number_of_entries_end">entries:</string>
 </resources>
